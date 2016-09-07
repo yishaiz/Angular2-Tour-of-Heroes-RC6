@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
 
 import {Hero} from './Heroes/hero';
+import {HeroDetailComponent} from './Heroes/hero-detail.component';
 
 @Component({
   selector: 'my-app',
+  // directives:[HeroDetailComponent],
   styles: [`
   .selected {
     background-color: #CFD8DC !important;
@@ -59,6 +61,7 @@ import {Hero} from './Heroes/hero';
   }
 
 `],
+
   template: `
     
     <h1>{{title}}</h1>
@@ -75,14 +78,17 @@ import {Hero} from './Heroes/hero';
      
      
      
+     
 <div *ngIf="selectedHero">
-    <h2>{{selectedHero.name}} details!</h2>
+  <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+    
+    <!--<h2>{{selectedHero.name}} details!</h2>
     <div>
         <label>id: </label>{{selectedHero.id}}</div>
         <div>
         <label>name: </label>
         <input [(ngModel)]="selectedHero.name"  placeholder="name"/>
-    </div>
+    </div>-->
 </div>
 
 `
