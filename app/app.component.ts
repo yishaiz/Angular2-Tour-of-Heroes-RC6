@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { Hero } from './Heroes/hero';
 import { HeroDetailComponent } from './Heroes/hero-detail.component';
-import { heroes } from './Heroes/hero.service';
+import { HeroService } from './Heroes/hero.service';
 
 /*
 
@@ -23,6 +23,7 @@ import { heroes } from './Heroes/hero.service';
 
 @Component({
   selector: 'my-app',
+  providers: [HeroService],
   // directives:[HeroDetailComponent],
   styles: [`
   .selected {
@@ -82,7 +83,6 @@ import { heroes } from './Heroes/hero.service';
 
   template: `
     
-    <h1>{{title}}</h1>    
     <h1>{{title}}</h1>
     <h2>My Heroes</h2>
       <ul class="heroes">
@@ -111,8 +111,13 @@ export class AppComponent {
 
   // public heroes=HEROS;
 
-  constructor( ){
-    this.heroesFromService= heroes;
+
+  constructor(private heroService: HeroService) {
+    // this.heroesFromService = heroes;
+  }
+
+  ngOnInit() {
+    this.heroesFromService = this.heroService.getHeroes();
   }
 
 
