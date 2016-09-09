@@ -1,30 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
-import { Hero } from './Heroes/hero';
-import { HeroDetailComponent } from './Heroes/hero-detail.component';
-import { HeroesService } from './Heroes/heroes.service';
-
-/*
-
- const HEROES: Hero[] = [
- { id: 11, name: 'Mr. Nice' },
- { id: 12, name: 'Narco' },
- { id: 13, name: 'Bombasto' },
- { id: 14, name: 'Celeritas' },
- { id: 15, name: 'Magneta' },
- { id: 16, name: 'RubberMan' },
- { id: 17, name: 'Dynama' },
- { id: 18, name: 'Dr IQ' },
- { id: 19, name: 'Magma' },
- { id: 20, name: 'Tornado' }
- ];
- */
-
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  providers: [HeroesService],
-  // directives:[HeroDetailComponent],
   styles: [`
   .selected {
     background-color: #CFD8DC !important;
@@ -82,62 +59,15 @@ import { HeroesService } from './Heroes/heroes.service';
 `],
 
   template: `
-    
-    <h1>{{title}}</h1>
-    <h2>My Heroes</h2>
-      <ul class="heroes">
- 
-      <li *ngFor="let hero of heroes; trackBy: trackByHeroes" 
-        (click)="onSelect(hero)"
-        [class.selected]="hero === selectedHero">
+          
+    <h3>use heroes component</h3>
+     <my-heroes></my-heroes> 
 
-        <span class="badge">{{hero.id}}</span>{{hero.name}}
-      </li>
-     </ul>
-   
-    <div *ngIf="selectedHero">
-      <my-hero-detail [hero]="selectedHero"></my-hero-detail>
-    </div>
 
 `
 })
-export class AppComponent implements OnInit {
-  title = 'Tour of Heroes';
+export class AppComponent  {
 
-  heroes: Hero[];
-
-  selectedHero: Hero;
-
-  constructor(private heroesService: HeroesService) {
-    // this.heroesFromService = heroes;
-  }
-
-  ngOnInit() {
-    this.getHeroes();
-  }
-
-  getHeroes() {
-
-    // this.heroesService.getHeroes().then(
-    this.heroesService.getHeroesSlowly().then(
-      heroes => this.heroes = heroes
-    );
-  }
-
-
-  hero: Hero = {
-    id: 1,
-    name: 'Windstorm'
-  };
-
-  onSelect(hero: Hero) {
-    this.selectedHero = hero;
-    console.log(this.selectedHero);
-  }
-
-  trackByHeroes(index: number, hero: Hero) {
-    return hero.id;
-  }
 
 
 }
