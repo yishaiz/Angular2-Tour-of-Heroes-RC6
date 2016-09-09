@@ -18,7 +18,7 @@ export class HeroesService {
     // return Promise.resolve(HEROES);
 
     return new Promise<Hero[]>(
-      resolve => setTimeout( () => resolve(HEROES) , 2000)
+      resolve => setTimeout(() => resolve(HEROES), 2000)
     );
   }
 

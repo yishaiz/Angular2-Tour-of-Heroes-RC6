@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import {HeroDetailComponent} from './hero-detail.component';
-import {Hero} from './Hero';
+import { Hero } from './Hero';
 
 // import {heroes} from './hero.service';
-import {HeroesService} from './heroes.service';
+import { HeroesService } from './heroes.service';
 
 
 @Component({
   selector: 'my-heroes',
   // directives: [HeroDetailComponent],
-  providers: [HeroesService],
+  // providers: [HeroesService],
   styles: [`
   .selected {
     background-color: #CFD8DC !important;
