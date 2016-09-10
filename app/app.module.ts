@@ -11,6 +11,8 @@ import { DashboardComponent }  from './Dashboard/dashboard.component';
 import { PageNotFoundComponent}  from './page-not-found.component';
 
 import { routing, appRoutingProviders } from './app.routing';
+import { MoviesList } from "./Movies/movies-list";
+import { AboutMovies } from "./Movies/about-movies";
 
 
 @NgModule({
@@ -25,8 +27,9 @@ import { routing, appRoutingProviders } from './app.routing';
     HeroDetailComponent,
     AnotherComponent,
     DashboardComponent,
-    PageNotFoundComponent
-
+    PageNotFoundComponent,
+    MoviesList,
+    AboutMovies
   ],
   providers: [
     appRoutingProviders

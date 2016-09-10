@@ -5,6 +5,8 @@ import { HeroesComponent } from "./Heroes/heroes.component";
 import { HeroDetailComponent } from "./Heroes/hero-detail.component";
 import { PageNotFoundComponent } from "./page-not-found.component";
 import { AnotherComponent } from "./Another/another.component";
+import { MoviesList } from "./Movies/movies-list";
+import { AboutMovies } from "./Movies/about-movies";
 
 
 const appRoutes: Routes = [
@@ -18,7 +20,8 @@ const appRoutes: Routes = [
       name: 'yishai'
     }
   },
-
+  {path: 'movies', component: MoviesList},
+  {path: 'movies/about', component: AboutMovies},
   { path: '**', component: PageNotFoundComponent }
 ];
 
