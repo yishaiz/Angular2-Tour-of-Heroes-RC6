@@ -5,14 +5,16 @@ import { HeroesComponent } from "./Heroes/heroes.component";
 import { HeroDetailComponent } from "./Heroes/hero-detail.component";
 import { PageNotFoundComponent } from "./page-not-found.component";
 import { AnotherComponent } from "./Another/another.component";
-import { MoviesList } from "./Movies/movies-list";
-import { AboutMovies } from "./Movies/about-movies";
+import { MoviesListComponent } from "./Movies/movies-list";
+import { AboutMoviesComponent } from "./Movies/about-movies";
 
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
+  /*
   { path: 'heroes', component: HeroesComponent },
   { path: 'hero/:id', component: HeroDetailComponent },
+  */
   {
     path: 'another',
     component: AnotherComponent,
@@ -20,10 +22,22 @@ const appRoutes: Routes = [
       name: 'yishai'
     }
   },
-  {path: 'movies', component: MoviesList},
-  {path: 'movies/about', component: AboutMovies},
+  /*
+  {path: 'movies', component: MoviesListComponent},
+  {path: 'movies/about', component: AboutMoviesComponent},
+  */
+
   { path: '**', component: PageNotFoundComponent }
 ];
+
+
+/*
+ ...heroesRouting,
+ ...moviesRouting,
+ ...anotherRouting,
+ */
+
+
 
 export const appRoutingProviders: any[] = [];
 

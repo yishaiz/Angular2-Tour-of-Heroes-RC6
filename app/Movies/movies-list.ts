@@ -12,6 +12,6 @@ import {Component} from '@angular/core';
 </ul>
 `
 })
-export class MoviesList {
+export class MoviesListComponent {
 
 }

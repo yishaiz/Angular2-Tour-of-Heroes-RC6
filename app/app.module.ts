@@ -11,25 +11,29 @@ import { DashboardComponent }  from './Dashboard/dashboard.component';
 import { PageNotFoundComponent}  from './page-not-found.component';
 
 import { routing, appRoutingProviders } from './app.routing';
-import { MoviesList } from "./Movies/movies-list";
-import { AboutMovies } from "./Movies/about-movies";
+import { MoviesListComponent } from "./Movies/movies-list";
+import { AboutMoviesComponent } from "./Movies/about-movies";
+import { HeroesModule } from "./Heroes/heroes.module";
+import { MoviesModule } from "./Movies/movies.module";
 
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    routing
+    routing,
+    HeroesModule,
+    MoviesModule
   ],
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
+    /*HeroesComponent,
+    HeroDetailComponent,*/
     AnotherComponent,
     DashboardComponent,
-    PageNotFoundComponent,
-    MoviesList,
-    AboutMovies
+    PageNotFoundComponent
+    /*MoviesListComponent,
+    AboutMoviesComponent*/
   ],
   providers: [
     appRoutingProviders

@@ -10,6 +10,6 @@ import {Component} from '@angular/core';
     Bla bla...
 </p>`
 })
-export class AboutMovies {
+export class AboutMoviesComponent {
 
 }
