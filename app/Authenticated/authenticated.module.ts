@@ -5,6 +5,9 @@ import { FormsModule } from "@angular/forms";
 import { AuthenticatedComponent } from "./authenticated.component";
 
 import { authenticatedRouting } from './authenticated.routing';
+import { AuthService } from "../auth.service";
+import { AuthGuard } from "../auth-guard.service";
+
 
 @NgModule({
   imports: [
@@ -15,7 +18,10 @@ import { authenticatedRouting } from './authenticated.routing';
   declarations: [
     AuthenticatedComponent
   ],
-  providers: []
+  providers: [
+    AuthGuard,
+    AuthService
+  ]
 })
 export class AuthenticatedModule {
 
