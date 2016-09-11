@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+
 import { Hero } from './Hero';
-import {ActivatedRoute, Router} from "@angular/router";
-import {HeroesService} from "./heroes.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { HeroesService } from "./heroes.service";
 
 @Component({
   selector: 'my-hero-detail',
@@ -18,7 +19,8 @@ import {HeroesService} from "./heroes.service";
   </div>
 `
 })
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnInit, OnDestroy {
+
   @Input() hero: Hero;
   private subscriber: any;
 
@@ -39,4 +41,9 @@ export class HeroDetailComponent {
       }
     );
   }
+
+  ngOnDestroy(){
+    this.subscriber.unsubscribe();
+  }
+
 }
