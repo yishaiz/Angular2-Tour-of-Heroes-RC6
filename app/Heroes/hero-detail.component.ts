@@ -48,12 +48,12 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscriber.unsubscribe();
   }
 
 
-  returnToHeroesList(){
+  returnToHeroesList() {
     this.router.navigate(['/heroes']);
   }
 

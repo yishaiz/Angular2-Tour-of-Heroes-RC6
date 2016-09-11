@@ -3,19 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 
 import { AppComponent }  from './app.component';
-import { HeroesComponent }  from './Heroes/heroes.component';
-import { HeroDetailComponent }  from './Heroes/hero-detail.component';
+// import { HeroesComponent }  from './Heroes/heroes.component';
+// import { HeroDetailComponent }  from './Heroes/hero-detail.component';
 
-import { AnotherComponent}  from './Another/another.component';
+import { AnotherComponent }  from './Another/another.component';
 import { DashboardComponent }  from './Dashboard/dashboard.component';
-import { PageNotFoundComponent}  from './page-not-found.component';
+import { PageNotFoundComponent }  from './page-not-found.component';
 
 import { routing, appRoutingProviders } from './app.routing';
-import { MoviesListComponent } from "./Movies/movies-list";
-import { AboutMoviesComponent } from "./Movies/about-movies";
+// import { MoviesListComponent } from "./Movies/movies-list";
+// import { AboutMoviesComponent } from "./Movies/about-movies";
+
 import { HeroesModule } from "./Heroes/heroes.module";
 import { MoviesModule } from "./Movies/movies.module";
 
+import { AdminModule } from './Admin/admin.module';
+import { AuthenticatedModule } from './Authenticated/authenticated.module';
 
 @NgModule({
   imports: [
@@ -23,17 +26,22 @@ import { MoviesModule } from "./Movies/movies.module";
     FormsModule,
     routing,
     HeroesModule,
-    MoviesModule
+    MoviesModule,
+    AdminModule,
+    AuthenticatedModule
+
   ],
   declarations: [
     AppComponent,
-    /*HeroesComponent,
-    HeroDetailComponent,*/
+    /*
+    HeroesComponent,
+     HeroDetailComponent,
+     */
     AnotherComponent,
     DashboardComponent,
     PageNotFoundComponent
     /*MoviesListComponent,
-    AboutMoviesComponent*/
+     AboutMoviesComponent*/
   ],
   providers: [
     appRoutingProviders

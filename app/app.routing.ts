@@ -12,9 +12,9 @@ import { AboutMoviesComponent } from "./Movies/about-movies";
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   /*
-  { path: 'heroes', component: HeroesComponent },
-  { path: 'hero/:id', component: HeroDetailComponent },
-  */
+   { path: 'heroes', component: HeroesComponent },
+   { path: 'hero/:id', component: HeroDetailComponent },
+   */
   {
     path: 'another',
     component: AnotherComponent,
@@ -23,9 +23,9 @@ const appRoutes: Routes = [
     }
   },
   /*
-  {path: 'movies', component: MoviesListComponent},
-  {path: 'movies/about', component: AboutMoviesComponent},
-  */
+   {path: 'movies', component: MoviesListComponent},
+   {path: 'movies/about', component: AboutMoviesComponent},
+   */
 
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -36,7 +36,6 @@ const appRoutes: Routes = [
  ...moviesRouting,
  ...anotherRouting,
  */
-
 
 
 export const appRoutingProviders: any[] = [];
