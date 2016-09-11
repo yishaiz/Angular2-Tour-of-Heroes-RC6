@@ -3,6 +3,8 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 
 import { AdminComponent } from "./admin.component";
+import { AuthGuard } from "../auth-guard.service";
+
 
 import { adminRouting } from './admin.routing';
 
@@ -15,7 +17,9 @@ import { adminRouting } from './admin.routing';
   declarations: [
     AdminComponent
   ],
-  providers: []
+  providers: [
+    AuthGuard
+  ]
 })
 export class AdminModule {
 

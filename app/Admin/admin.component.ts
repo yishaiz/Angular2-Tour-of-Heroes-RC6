@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'admin',
+  styles:[`
+    h3{
+        color:red;
+    }
+  `],
+
   template: `
 
 <h2>Administrator Area</h2>
