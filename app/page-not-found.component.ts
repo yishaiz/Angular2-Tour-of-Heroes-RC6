@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
         }
         
         img{
-            width:200px;
+            width:200px;padding-right: 30px;
         }
         
         img.little{

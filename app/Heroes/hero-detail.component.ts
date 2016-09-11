@@ -7,6 +7,7 @@ import { HeroesService } from "./heroes.service";
 @Component({
   selector: 'my-hero-detail',
   styles: [` 
+            button{margin-top: 40px;  
 `],
   template: `
   <div *ngIf="hero">
@@ -17,6 +18,11 @@ import { HeroesService } from "./heroes.service";
       <input [(ngModel)]="hero.name" placeholder="name"/>
     </div>
   </div>
+  
+  
+      <button (click) = "returnToHeroesList()">Return to Heroes</button>
+
+
 `
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
@@ -29,36 +35,26 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
               private service: HeroesService) {
   }
 
-
   ngOnInit() {
+    this.subscriber = this.route.params.subscribe(
+      params => {
+        let id = +params['id'];
+        // (+) converts string 'id' to a number
 
-    let id = +this.route.snapshot.params['id'];
-
-    this.service.getHero(id).then(
-      hero => this.hero = hero
+        this.service.getHero(id).then(
+          hero => this.hero = hero
+        )
+      }
     );
-
-    /*
-     this.subscriber = this.route.params.subscribe(
-     params => {
-     let id = +params['id'];
-     // (+) converts string 'id' to a number
-
-     this.service.getHero(id).then(
-     hero => this.hero = hero
-     )
-     }
-     );
-     */
-
   }
 
-  /*
+  ngOnDestroy(){
+    this.subscriber.unsubscribe();
+  }
 
-   ngOnDestroy(){
-   this.subscriber.unsubscribe();
-   }
 
-   */
+  returnToHeroesList(){
+    this.router.navigate(['/heroes']);
+  }
 
 }
