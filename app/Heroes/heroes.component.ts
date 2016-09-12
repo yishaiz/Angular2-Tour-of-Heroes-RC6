@@ -116,7 +116,9 @@ export class HeroesComponent implements OnInit {
   onSelect(hero: Hero) {
     // this.selectedHero = hero;
     // console.log(this.selectedHero);
-    this.router.navigate(['/hero', hero.id]);
+
+    // this.router.navigate(['/hero', hero.id]);
+    this.router.navigate(['/hero-candeactivate', hero.id]);
   }
 
   trackByHeroes(index: number, hero: Hero) {
