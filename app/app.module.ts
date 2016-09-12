@@ -20,6 +20,8 @@ import { MoviesModule } from "./Movies/movies.module";
 import { AdminModule } from './Admin/admin.module';
 import { AuthenticatedModule } from './Authenticated/authenticated.module';
 import { LoginComponent } from "./Login/login.component";
+import { DialogService }  from './dialog.service';
+
 
 @NgModule({
   imports: [
@@ -49,7 +51,8 @@ import { LoginComponent } from "./Login/login.component";
     appRoutingProviders
   ],
   bootstrap: [
-    AppComponent
+    AppComponent,
+    DialogService
   ]
 })
 export class AppModule {
