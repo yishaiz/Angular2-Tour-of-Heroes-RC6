@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from "./page-not-found.component";
 import { AnotherComponent } from "./Another/another.component";
 import { MoviesListComponent } from "./Movies/movies-list";
 import { AboutMoviesComponent } from "./Movies/about-movies";
+import { LoginComponent } from "./Login/login.component";
 
 
 const appRoutes: Routes = [
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
    {path: 'movies', component: MoviesListComponent},
    {path: 'movies/about', component: AboutMoviesComponent},
    */
+  {path: 'login', component: LoginComponent},
 
   { path: '**', component: PageNotFoundComponent }
 ];

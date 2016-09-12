@@ -19,6 +19,7 @@ import { MoviesModule } from "./Movies/movies.module";
 
 import { AdminModule } from './Admin/admin.module';
 import { AuthenticatedModule } from './Authenticated/authenticated.module';
+import { LoginComponent } from "./Login/login.component";
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { AuthenticatedModule } from './Authenticated/authenticated.module';
      */
     AnotherComponent,
     DashboardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent
     /*MoviesListComponent,
      AboutMoviesComponent*/
   ],
