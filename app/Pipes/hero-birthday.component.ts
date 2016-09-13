@@ -1,13 +1,14 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { MultiNumber } from './multi.pipe';
 
 @Component({
-    selector: 'hero-birthday',
-    styles: [`
+  selector: 'hero-birthday',
+  styles: [`
     h3{
         color:green;
     }
 `],
-    template: `
+  template: `
         The hero's birthday is :
         <div>{{ birthday }}</div>
         
@@ -34,15 +35,21 @@ json: {{myHero | json}}
 dd/MM/yy
  <div>{{ birthday | date : 'dd/MM/yy'}}</div>
 
+
+<hr/>
+custom pipe - multi 
+ <h3>multi 10</h3>  
+ {{10 | multiPipe }}
+
 `
 })
 export class HeroBirthdayComponent {
-    birthday = new Date(1988, 3, 15); // April 15, 1988
+  birthday = new Date(1988, 3, 15); // April 15, 1988
 
-    myHero = {
-        name: 'Bar',
-        date: new Date(1988, 3, 15)
-    }
+  myHero = {
+    name: 'Bar',
+    date: new Date(1988, 3, 15)
+  }
 
-    birthday22 : any = null;//new Date(1988, 3, 15); // April 15, 1988
+  birthday22: any = null;//new Date(1988, 3, 15); // April 15, 1988
 }

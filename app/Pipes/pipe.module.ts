@@ -5,6 +5,7 @@ import {pipeRouting} from './pipe.routing';
 
 
 import {HeroBirthdayComponent} from "./hero-birthday.component";
+import { MultiNumber } from "./multi.pipe";
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import {HeroBirthdayComponent} from "./hero-birthday.component";
     pipeRouting
   ],
   declarations: [
-    HeroBirthdayComponent
+    HeroBirthdayComponent,
+    MultiNumber
   ],
   providers: [
   ]
