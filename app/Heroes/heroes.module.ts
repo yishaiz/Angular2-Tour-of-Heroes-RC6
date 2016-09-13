@@ -9,7 +9,6 @@ import { HeroDetailComponent } from "./hero-detail.component";
 import { HeroesService } from "./heroes.service";
 
 import { heroesRouting } from './heroes.routing';
-import { HeroDetailCanDeactivateComponent } from "./hero-detail-deactivate.component";
 
 @NgModule({
   imports: [
@@ -19,8 +18,7 @@ import { HeroDetailCanDeactivateComponent } from "./hero-detail-deactivate.compo
   ],
   declarations: [
     HeroesComponent,
-    HeroDetailComponent,
-    HeroDetailCanDeactivateComponent
+    HeroDetailComponent
   ],
   providers: [
     HeroesService

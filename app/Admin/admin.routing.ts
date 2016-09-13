@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent }    from './admin.component';
 import { AuthGuard } from "../auth-guard.service";
+import { ModuleWithProviders } from '@angular/core';
 
 const adminRoutes: Routes = [
   {
@@ -10,5 +11,5 @@ const adminRoutes: Routes = [
   }
 ];
 
-export const adminRouting = RouterModule.forChild(adminRoutes);
+export const adminRouting: ModuleWithProviders = RouterModule.forChild(adminRoutes);
 

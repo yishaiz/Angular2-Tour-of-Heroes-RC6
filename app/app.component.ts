@@ -4,7 +4,7 @@ import { HeroesService } from "./Heroes/heroes.service";
 @Component({
   selector: 'my-app',
   providers: [
-    HeroesService
+
   ],
   styles: [`
   .selected {

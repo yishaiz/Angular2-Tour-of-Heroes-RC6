@@ -11,8 +11,6 @@ import { DashboardComponent }  from './Dashboard/dashboard.component';
 import { PageNotFoundComponent }  from './page-not-found.component';
 
 import { routing, appRoutingProviders } from './app.routing';
-// import { MoviesListComponent } from "./Movies/movies-list";
-// import { AboutMoviesComponent } from "./Movies/about-movies";
 
 import { HeroesModule } from "./Heroes/heroes.module";
 import { MoviesModule } from "./Movies/movies.module";
@@ -20,8 +18,7 @@ import { MoviesModule } from "./Movies/movies.module";
 import { AdminModule } from './Admin/admin.module';
 import { AuthenticatedModule } from './Authenticated/authenticated.module';
 import { LoginComponent } from "./Login/login.component";
-import { DialogService }  from './dialog.service';
-
+import { HeroesService } from "./Heroes/heroes.service";
 
 @NgModule({
   imports: [
@@ -36,23 +33,19 @@ import { DialogService }  from './dialog.service';
   ],
   declarations: [
     AppComponent,
-    /*
-    HeroesComponent,
-     HeroDetailComponent,
-     */
+
     AnotherComponent,
     DashboardComponent,
     PageNotFoundComponent,
     LoginComponent
-    /*MoviesListComponent,
-     AboutMoviesComponent*/
+
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    HeroesService
   ],
   bootstrap: [
-    AppComponent,
-    DialogService
+    AppComponent
   ]
 })
 export class AppModule {

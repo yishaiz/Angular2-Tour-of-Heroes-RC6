@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
 
 import { DashboardComponent } from "./Dashboard/dashboard.component";
 import { HeroesComponent } from "./Heroes/heroes.component";
@@ -11,11 +12,14 @@ import { LoginComponent } from "./Login/login.component";
 
 
 const appRoutes: Routes = [
+  {
+    path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full'
+  },
+
   { path: 'dashboard', component: DashboardComponent },
-  /*
-   { path: 'heroes', component: HeroesComponent },
-   { path: 'hero/:id', component: HeroDetailComponent },
-   */
+
   {
     path: 'another',
     component: AnotherComponent,
@@ -23,11 +27,8 @@ const appRoutes: Routes = [
       name: 'yishai'
     }
   },
-  /*
-   {path: 'movies', component: MoviesListComponent},
-   {path: 'movies/about', component: AboutMoviesComponent},
-   */
-  {path: 'login', component: LoginComponent},
+
+  { path: 'login', component: LoginComponent },
 
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -42,5 +43,5 @@ const appRoutes: Routes = [
 
 export const appRoutingProviders: any[] = [];
 
-export const routing = RouterModule.forRoot(appRoutes);
-
+export const routing : ModuleWithProviders = RouterModule.forRoot(appRoutes);
+//ModuleWithProviders
