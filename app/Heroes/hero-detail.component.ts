@@ -6,19 +6,9 @@ import { HeroesService } from "./heroes.service";
 
 @Component({
   selector: 'my-hero-detail',
-  styles: [` 
-          button{
-            margin-top: 40px;
-          }
-          .notification{
-            color:green;
-          }
-          
-          .input-name{
-              margin-top:20px;          
-          }
+  moduleId:module.id,
+  styleUrls:['hero-detail.component.css'],
 
-`],
   template: `
    <div *ngIf="hero">
     <h2>{{hero.name}} details!</h2>
@@ -37,6 +27,11 @@ import { HeroesService } from "./heroes.service";
 </div>
   
     <button (click) = "returnToHeroesList()">Return to Heroes</button>
+    
+        <br/>
+    
+    <button (click) = "returnToHeroesListUsingBack()">Return to Heroes <span class="blue">(using history.back)</span></button>
+ 
     `
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
@@ -76,7 +71,7 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   save() {
     console.log('save');
     this.hero.name = this.editName;
-    this.returnToHeroesList();
+    // this.returnToHeroesList();
   }
 
   cancel() {
@@ -87,6 +82,11 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
   returnToHeroesList() {
     this.router.navigate(['/heroes']);
+  }
+
+
+  returnToHeroesListUsingBack() {
+    window.history.back();
   }
 
 
