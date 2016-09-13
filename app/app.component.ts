@@ -77,6 +77,7 @@ import { HeroesService } from "./Heroes/heroes.service";
       <a routerLink="/admin" routerLinkActive="active">Admin</a>
       <a routerLink="/authenticated" routerLinkActive="active">Authenticated</a>
       <a routerLink="/Pipe-Hero-Birthday" routerLinkActive="active">Pipe - hero-birthday</a>
+      <a routerLink="/heroes-orderby" routerLinkActive="active">Heroes - OrderBy</a>
 
       <a routerLink="/xxxx" routerLinkActive="active">Not found page</a>
     </nav>

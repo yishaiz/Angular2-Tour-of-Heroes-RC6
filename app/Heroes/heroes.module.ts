@@ -9,6 +9,8 @@ import { HeroDetailComponent } from "./hero-detail.component";
 import { HeroesService } from "./heroes.service";
 
 import { heroesRouting } from './heroes.routing';
+import {HeroesOrderbyComponent} from "./heroes-orderby.component";
+import { OrderByPipe } from "../Pipes/hero.orderby.name.pipe";
 
 @NgModule({
   imports: [
@@ -18,7 +20,10 @@ import { heroesRouting } from './heroes.routing';
   ],
   declarations: [
     HeroesComponent,
-    HeroDetailComponent
+    HeroesOrderbyComponent,
+    HeroDetailComponent,
+    HeroesOrderbyComponent,
+    OrderByPipe
   ],
   providers: [
     HeroesService
