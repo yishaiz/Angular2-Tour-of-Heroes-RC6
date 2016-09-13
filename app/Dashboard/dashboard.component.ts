@@ -5,8 +5,12 @@ import { HeroesService } from '../Heroes/heroes.service';
 
 @Component({
   selector: 'dashboard',
+  moduleId: module.id,
+  styleUrls: ['./dashboard.css'],
 
-  templateUrl: 'app/dashboard/dashboard.component.html'
+  // templateUrl: 'app/dashboard/dashboard.component.html'
+  templateUrl: './dashboard.component.html'
+
   // templateUrl:'./dashboard/dashboard.component.html'
 
   /*  template: `

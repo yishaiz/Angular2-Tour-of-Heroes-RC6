@@ -19,6 +19,7 @@ import { AdminModule } from './Admin/admin.module';
 import { AuthenticatedModule } from './Authenticated/authenticated.module';
 import { LoginComponent } from "./Login/login.component";
 import { HeroesService } from "./Heroes/heroes.service";
+import {PipeModule} from "./Pipes/pipe.module";
 
 @NgModule({
   imports: [
@@ -28,8 +29,8 @@ import { HeroesService } from "./Heroes/heroes.service";
     HeroesModule,
     MoviesModule,
     AdminModule,
-    AuthenticatedModule
-
+    AuthenticatedModule,
+    PipeModule
   ],
   declarations: [
     AppComponent,
