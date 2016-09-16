@@ -20,7 +20,6 @@ import { OrderByPipe } from "../Pipes/hero.orderby.name.pipe";
   ],
   declarations: [
     HeroesComponent,
-    HeroesOrderbyComponent,
     HeroDetailComponent,
     HeroesOrderbyComponent,
     OrderByPipe
