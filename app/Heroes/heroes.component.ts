@@ -19,6 +19,8 @@ import { Router } from "@angular/router";
           (click)="onSelect(hero)">
    
           <span class="badge">{{hero.id}}</span>{{hero.name}}
+           <button class="delete"
+                   (click)="delete(hero); $event.stopPropagation()">x</button>
         </li>
        </ul>
   </div>
@@ -79,5 +81,13 @@ export class HeroesComponent implements OnInit {
     this.heroesService.create(name)
       .then(this.getHeroes());
   }
+
+
+  delete(hero: Hero): void {
+    this.heroesService
+      .delete(hero)
+      .then(this.getHeroes());
+  }
+
 
 }
