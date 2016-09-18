@@ -6,8 +6,8 @@ import { HeroesService } from "./heroes.service";
 
 @Component({
   selector: 'my-hero-detail',
-  moduleId:module.id,
-  styleUrls:['hero-detail.component.css'],
+  moduleId: module.id,
+  styleUrls: ['hero-detail.component.css'],
 
   template: `
    <div *ngIf="hero">
@@ -43,16 +43,16 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private service: HeroesService) {
+              private heroesService: HeroesService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.subscriber = this.route.params.subscribe(
       params => {
         let id = +params['id'];
         // (+) converts string 'id' to a number
 
-        this.service.getHero(id).then(
+        this.heroesService.getHero(id).then(
           hero => {
             this.hero = hero;
             this.editName = this.hero.name;
@@ -62,30 +62,27 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
     );
   }
 
-
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscriber.unsubscribe();
   }
 
-
-  save() {
-    console.log('save');
+  save(): void{
     this.hero.name = this.editName;
-    // this.returnToHeroesList();
+
+    this.heroesService.update(this.hero)
+      .then(this.returnToHeroesList());
   }
 
-  cancel() {
+  cancel(): void {
     console.log('cacnel');
     this.returnToHeroesList();
   }
 
-
-  returnToHeroesList() {
+  returnToHeroesList(): any{
     this.router.navigate(['/heroes']);
   }
 
-
-  returnToHeroesListUsingBack() {
+  returnToHeroesListUsingBack(): void {
     window.history.back();
   }
 

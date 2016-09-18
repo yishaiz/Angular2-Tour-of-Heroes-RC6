@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Hero }       from './Hero';
-import { Http }       from '@angular/http';
+import { Http, Headers, Response } from "@angular/http";
+
 import 'rxjs/add/operator/toPromise';
+
 
 // import { HEROES }     from './mock-heroes';
 
@@ -63,6 +65,68 @@ export class HeroesService {
         .filter((item: Hero) => item.id == id)[0] as Hero)
       .catch(this.handleError);
   }
+
+  /*
+   let headers = new Headers({
+   'Content-Type': 'application/json'
+   });
+
+   */
+
+
+  // Add new Hero
+  create(heroName: string): Promise<Hero> {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http
+      .post(this.heroesUrl, JSON.stringify({name: heroName}),
+        {
+          headers: headers
+        })
+      .toPromise()
+      .then(res => res.json().data)
+      .catch(this.handleError);
+  }
+
+  update(hero: Hero): Promise<Hero> {
+    let headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+
+    let url = `${this.heroesUrl}/${hero.id}`;
+
+    return this.http
+      .put(url, JSON.stringify(hero), { headers: headers })
+      .toPromise()
+      .then(() => hero)
+      .catch(this.handleError);
+  }
+
+
+  delete(hero: Hero): Promise<Response> {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    let url = `${this.heroesUrl}/${hero.id}`;
+
+    return this.http
+      .delete(url, { headers: headers })
+      .toPromise()
+      .catch(this.handleError);
+  }
+
+
+  /*
+   getHero(id: number): Promise<Hero> {
+   return this.http.get(this.heroesUrl)
+   .toPromise()
+   .then(response => response.json().data
+   .filter((item: Hero) => item.id == id)[0] as Hero)
+   .catch(this.handleError);
+   }
+   */
 
 
   getHeroEs5(id: number): Promise<Hero> {

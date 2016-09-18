@@ -11,15 +11,29 @@ import { Router } from "@angular/router";
   template: `
     
     <h2>My Heroes</h2>
+    
+    <div class="col-lg-3">
       <ul class="heroes">
- 
-      <li *ngFor="let hero of heroes; trackBy: trackByHeroes" 
-        (click)="onSelect(hero)">
- 
-        <span class="badge">{{hero.id}}</span>{{hero.name}}
-      </li>
-     </ul>
    
+        <li *ngFor="let hero of heroes; trackBy: trackByHeroes" 
+          (click)="onSelect(hero)">
+   
+          <span class="badge">{{hero.id}}</span>{{hero.name}}
+        </li>
+       </ul>
+  </div>
+
+    <div class="col-lg-3">
+      <h3>add a new hero</h3>
+      
+      <div>
+        <label>Hero name:</label> <input #heroName />
+        <button (click)="add(heroName.value); heroName.value=''">
+          Add
+        </button>
+      </div>
+    </div>
+      
  
 `
 })
@@ -35,7 +49,7 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  getHeroes() {
+  getHeroes(): any {
     this.heroesService.getHeroes().then(
       (heroes: Hero[]) => this.heroes = heroes
     );
@@ -52,6 +66,18 @@ export class HeroesComponent implements OnInit {
 
   trackByHeroes(index: number, hero: Hero) {
     return hero.id;
+  }
+
+
+  add(name: string): void {
+    name = name.trim();
+
+    if (!name) {
+      return;
+    }
+
+    this.heroesService.create(name)
+      .then(this.getHeroes());
   }
 
 }
