@@ -70,6 +70,7 @@ import { HeroesService } from "./Heroes/heroes.service";
       <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
       <a routerLink="/hero/13" routerLinkActive="active">Specific Hero</a>
+      <a routerLink="/hero-search" routerLinkActive="active">Hero Search</a>
       <a routerLink="/another" routerLinkActive="active">Another Component</a>
 
       <a routerLink="/movies" routerLinkActive="active">Movies</a>

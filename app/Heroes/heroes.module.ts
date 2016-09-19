@@ -7,6 +7,7 @@ import { HeroesComponent } from "./heroes.component";
 
 import { HeroDetailComponent } from "./hero-detail.component";
 import { HeroesService } from "./heroes.service";
+import { HeroSearchComponent } from "./hero-search.component";
 
 import { heroesRouting } from './heroes.routing';
 import {HeroesOrderbyComponent} from "./heroes-orderby.component";
@@ -22,6 +23,7 @@ import { OrderByPipe } from "../Pipes/hero.orderby.name.pipe";
     HeroesComponent,
     HeroDetailComponent,
     HeroesOrderbyComponent,
+    HeroSearchComponent,
     OrderByPipe
   ],
   providers: [
