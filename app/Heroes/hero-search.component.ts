@@ -35,11 +35,18 @@ export class HeroSearchComponent implements OnInit {
     this.heroes = this.searchTerms
       .debounceTime(300)        // wait for 300ms pause in events
       .distinctUntilChanged()   // ignore if next search term is same as previous
-      .switchMap(term => term   // switch to new observable each time
-        // return the http search observable
-        ? this.heroSearchService.search(term)
-        // or the observable of empty heroes if no search term
-        : Observable.of<Hero[]>([]))
+      .switchMap(term => {
+
+        // console.log('xxxx');
+        // console.log(term);
+
+        return term   // switch to new observable each time
+          // return the http search observable
+          ? this.heroSearchService.search(term)
+          // or the observable of empty heroes if no search term
+          : Observable.of<Hero[]>([])
+      })
+
       .catch(error => {
         // TODO: real error handling
         console.log(error);
