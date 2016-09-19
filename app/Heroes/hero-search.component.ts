@@ -2,13 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
+
+  // import 'rxjs/add/operator/debounceTime';
+import '../rxjs-extensions';
+
 import { HeroSearchService } from './hero-search.service';
 import { Hero } from './hero';
 
 @Component({
   selector: 'hero-search',
-  templateUrl: 'app/hero-search.component.html',
-  styleUrls: ['app/hero-search.component.css'],
+  templateUrl: 'hero-search.component.html',
+  styleUrls: [ 'hero-search.component.css'],
   providers: [HeroSearchService],
   moduleId: module.id
 })
@@ -22,6 +26,8 @@ export class HeroSearchComponent implements OnInit {
 
   // Push a search term into the observable stream.
   search(term: string): void {
+    console.log(term);
+
     this.searchTerms.next(term);
   }
 
