@@ -3,23 +3,29 @@ import { Hero }       from './Hero';
 import { Http, Headers, Response } from "@angular/http";
 
 import { Observable } from 'rxjs';
+import { getHeroUrl, selectedEnvironment, getObjectFromResponse } from './heroes-service.config';
 
 @Injectable()
 export class HeroSearchService {
 
-  constructor(private http: Http) {
+  environment: any;
+  heroUrl: string;
 
+  constructor(private http: Http) {
+    this.environment = selectedEnvironment;
+    this.heroUrl = getHeroUrl(this.environment);
   }
 
   search(term: string): Observable<Hero[]> {
-    let url = `app/heroes/?name=${term}`;
+    let url = `${this.heroUrl}/?name=${term}`;
 
-    // console.log(url);
+    console.log('url', url);
+
     // console.log('search service - ', term);
 
     return this.http
       .get(url)
-      .map((response: Response) => response.json().data as Hero[]
+      .map((response: Response) => getObjectFromResponse(this.environment, response) as Hero[]
       );
   }
 

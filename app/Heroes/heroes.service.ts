@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Hero }       from './Hero';
 import { Http, Headers, Response } from "@angular/http";
+import { getHeroUrl, selectedEnvironment, getObjectFromResponse } from './heroes-service.config';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -9,22 +10,41 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class HeroesService {
 
-  private heroesUrl = 'app/heroes';  // URL to web api
+  // private heroesUrl = 'app/heroes';  // URL to web api
+
+  environment: any;
+  heroUrl: string;
 
   constructor(private http: Http) {
+    this.environment = selectedEnvironment;
+    this.heroUrl = getHeroUrl(this.environment);
   }
 
-
   getHeroes(): Promise<Hero[]> {
-    return this.http.get(this.heroesUrl)
+
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+
+    // return this.http.get(heroesUrl,null,{headers: headers})
+    // return this.http.get(heroesUrl)
+    return this.http.get(this.heroUrl)
       .toPromise()
       .then(response => {
 
-        console.log(response);
-        console.log(response.json());
-        console.log(response.json().data);
+        // debugger;
+//         console.log(response);
+//         console.log(response.json());
+//         console.log(response.json().data);
 
-        return response.json().data as Hero[];
+        // let result = response.json().data ;
+        // let result = JSON.parse(response._body);
+
+        // return response.json().data as Hero[];
+
+        let result = getObjectFromResponse(this.environment, response);
+
+        return result as Hero[];
       })
       .catch(this.handleError);
   }
@@ -58,12 +78,13 @@ export class HeroesService {
 
 
   getHero(id: number): Promise<Hero> {
-    return this.http.get(this.heroesUrl)
+    return this.http.get(this.heroUrl)
       .toPromise()
-      .then(response => response.json().data
+      .then(response => getObjectFromResponse(this.environment, response)
         .filter((item: Hero) => item.id == id)[0] as Hero)
       .catch(this.handleError);
   }
+
 
   /*
    let headers = new Headers({
@@ -80,12 +101,12 @@ export class HeroesService {
     });
 
     return this.http
-      .post(this.heroesUrl, JSON.stringify({name: heroName}),
+      .post(this.heroUrl, JSON.stringify({ name: heroName }),
         {
           headers: headers
         })
       .toPromise()
-      .then(res => res.json().data)
+      .then(response => getObjectFromResponse(this.environment, response))
       .catch(this.handleError);
   }
 
@@ -94,7 +115,7 @@ export class HeroesService {
 
     headers.append('Content-Type', 'application/json');
 
-    let url = `${this.heroesUrl}/${hero.id}`;
+    let url = `${this.heroUrl}/${hero.id}`;
 
     return this.http
       .put(url, JSON.stringify(hero), { headers: headers })
@@ -108,7 +129,7 @@ export class HeroesService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    let url = `${this.heroesUrl}/${hero.id}`;
+    let url = `${this.heroUrl}/${hero.id}`;
 
     return this.http
       .delete(url, { headers: headers })
@@ -129,7 +150,7 @@ export class HeroesService {
 
 
   getHeroEs5(id: number): Promise<Hero> {
-    return this.http.get(this.heroesUrl)
+    return this.http.get(this.heroUrl)
       .toPromise()
       .then(response => response.json().data
         .filter(function (item: Hero) {
