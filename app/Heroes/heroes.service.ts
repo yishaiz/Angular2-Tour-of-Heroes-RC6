@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Hero }       from './Hero';
 import { Http, Headers, Response } from "@angular/http";
-import { getHeroUrl, selectedEnvironment, getObjectFromResponse } from './heroes-service.config';
+import { getHeroUrl, getSelectedEnvironment, getObjectFromResponse } from './heroes-service.config';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -16,7 +16,8 @@ export class HeroesService {
   heroUrl: string;
 
   constructor(private http: Http) {
-    this.environment = selectedEnvironment;
+    //   debugger;
+    this.environment = getSelectedEnvironment();
     this.heroUrl = getHeroUrl(this.environment);
   }
 
@@ -78,12 +79,25 @@ export class HeroesService {
 
 
   getHero(id: number): Promise<Hero> {
-    return this.http.get(this.heroUrl)
+    const url = `${this.heroUrl}/${id}`;
+    console.log('url', url);
+
+    return this.http.get(url)
       .toPromise()
-      .then(response => getObjectFromResponse(this.environment, response)
-        .filter((item: Hero) => item.id == id)[0] as Hero)
+      .then(response => getObjectFromResponse(this.environment, response) as Hero)
+        // .filter((item: Hero) => item.id == id)[0] as Hero)
       .catch(this.handleError);
   }
+
+  /*
+   getHero(id: number): Promise<Hero> {
+   return this.http.get(this.heroUrl)
+   .toPromise()
+   .then(response => getObjectFromResponse(this.environment, response)
+   .filter((item: Hero) => item.id == id)[0] as Hero)
+   .catch(this.handleError);
+   }
+   */
 
 
   /*

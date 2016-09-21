@@ -15,7 +15,7 @@ enum environments{
   node = 3
 }
 
-let getHeroUrl = function (environment: environments) : string {
+function getHeroUrl(environment: environments): string {
   switch (environment) {
     case environments.inMemory: {
       return environmentsUrls.inMemoryApiUrl;
@@ -27,13 +27,14 @@ let getHeroUrl = function (environment: environments) : string {
       return environmentsUrls.nodeApiUrl;
     }
     default: {
+      debugger;
       throw 'not valid envirnoment configuration';
     }
   }
 };
 
 // let getObjectFromResponse = function (environment: environments, response : Response) {
-let getObjectFromResponse = function (environment: environments, response: any) {
+function getObjectFromResponse(environment: environments, response: any) {
   switch (environment) {
 
     case environments.inMemory:
@@ -46,20 +47,25 @@ let getObjectFromResponse = function (environment: environments, response: any) 
     }
 
     default: {
+      debugger;
       throw 'not valid envirnoment configuration';
     }
   }
 };
 
+function getSelectedEnvironment() {
+  return selectedEnvironment;
+}
+
 let selectedEnvironment: environments;
 
-selectedEnvironment = environments.inMemory;
-// selectedEnvironment = environments.iis;
+// selectedEnvironment = environments.inMemory;
+selectedEnvironment = environments.iis;
 // selectedEnvironment = environments.node;
 
 
 export   {
-  selectedEnvironment,
+  getSelectedEnvironment,
   getHeroUrl,
   getObjectFromResponse
 }

@@ -37,7 +37,7 @@ import { PipeModule } from "./Pipes/pipe.module";
     PipeModule,
     HttpModule //,
     //
-      ,InMemoryWebApiModule.forRoot(InMemoryDataService)
+    //   ,InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   declarations: [
     AppComponent,

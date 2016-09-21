@@ -3,7 +3,7 @@ import { Hero }       from './Hero';
 import { Http, Headers, Response } from "@angular/http";
 
 import { Observable } from 'rxjs';
-import { getHeroUrl, selectedEnvironment, getObjectFromResponse } from './heroes-service.config';
+import { getHeroUrl, getSelectedEnvironment, getObjectFromResponse } from './heroes-service.config';
 
 @Injectable()
 export class HeroSearchService {
@@ -12,7 +12,7 @@ export class HeroSearchService {
   heroUrl: string;
 
   constructor(private http: Http) {
-    this.environment = selectedEnvironment;
+    this.environment = getSelectedEnvironment();
     this.heroUrl = getHeroUrl(this.environment);
   }
 
