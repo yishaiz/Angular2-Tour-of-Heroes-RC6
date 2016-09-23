@@ -85,7 +85,7 @@ export class HeroesService {
     return this.http.get(url)
       .toPromise()
       .then(response => getObjectFromResponse(this.environment, response) as Hero)
-        // .filter((item: Hero) => item.id == id)[0] as Hero)
+      // .filter((item: Hero) => item.id == id)[0] as Hero)
       .catch(this.handleError);
   }
 
@@ -120,7 +120,19 @@ export class HeroesService {
           headers: headers
         })
       .toPromise()
-      .then(response => getObjectFromResponse(this.environment, response))
+      .then(response => {
+        // debugger;
+        //return
+        // this.getHeroes();
+
+        console.log("created hero - ", getObjectFromResponse(this.environment, response) as Hero);
+
+        return getObjectFromResponse(this.environment, response) as Hero;
+        // return Promise.resolve(getObjectFromResponse(this.environment, response) as Hero);
+        // return getObjectFromResponse(this.environment, response) as Hero;
+
+      })
+      // .then(response => getObjectFromResponse(this.environment, response))
       .catch(this.handleError);
   }
 
@@ -137,7 +149,6 @@ export class HeroesService {
       .then(() => hero)
       .catch(this.handleError);
   }
-
 
   delete(hero: Hero): Promise<Response> {
     let headers = new Headers();

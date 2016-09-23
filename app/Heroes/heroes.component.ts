@@ -52,8 +52,19 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): any {
+
+    console.log("getHeroes start " );
+
     this.heroesService.getHeroes().then(
-      (heroes: Hero[]) => this.heroes = heroes
+      (heroes: Hero[]) =>
+      {
+
+        console.log("getHeroes resolved ", heroes );
+
+        debugger;
+
+        this.heroes = heroes
+      }
     );
   }
 
@@ -77,6 +88,8 @@ export class HeroesComponent implements OnInit {
     if (!name) {
       return;
     }
+
+    console.log("add hero - " ,name );
 
     this.heroesService.create(name)
       .then(this.getHeroes());
